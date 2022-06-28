@@ -1,4 +1,4 @@
-#design-pattern para android kotlin 
+# design-pattern para android kotlin 
 + abstract factory 
 + behavior 
 + responsibility 
