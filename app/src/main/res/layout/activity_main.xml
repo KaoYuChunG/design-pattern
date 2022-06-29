@@ -247,6 +247,39 @@
                 android:text="Star"/>
         </LinearLayout>
         <TextView
+            android:id="@+id/txt_mediator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/decorat"
+            android:layout_marginStart="10dp"
+            android:textSize="20sp"
+            android:text="Mediator"/>
+        <LinearLayout
+            android:id="@+id/mediator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/txt_mediator" >
+            <Button
+                android:id="@+id/teste20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Line"/>
+            <Button
+                android:id="@+id/teste21"
+                android:layout_marginStart="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dotte Line"/>
+            <Button
+                android:id="@+id/teste22"
+                android:layout_marginStart="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Star"/>
+        </LinearLayout>
+        <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
@@ -255,7 +288,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/decorat" />
+            app:layout_constraintTop_toBottomOf="@id/mediator" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

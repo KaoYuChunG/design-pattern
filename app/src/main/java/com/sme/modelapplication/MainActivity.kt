@@ -12,8 +12,14 @@ import com.sme.modelapplication.behavior.StockDisplay
 import com.sme.modelapplication.behavior.StockUpdate
 import com.sme.modelapplication.builder.Robot
 import com.sme.modelapplication.chainResponsibility.*
+import com.sme.modelapplication.command.CommandProcessor
+import com.sme.modelapplication.command.OrderAddCommand
+import com.sme.modelapplication.command.OrderPayCommand
+import com.sme.modelapplication.command.OrderSanCommand
 import com.sme.modelapplication.decorat.Printer
 import com.sme.modelapplication.decorat.satrtDraw
+import com.sme.modelapplication.mediator.ChatMediator
+import com.sme.modelapplication.mediator.ChatUser
 import com.sme.modelapplication.state.Moment
 import com.sme.modelapplication.state.WaterMachine2
 import com.sme.modelapplication.state.waterMachineOps
@@ -40,6 +46,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 //  state
     lateinit var machine: WaterMachine2
 
+//Mediator
+    val mediator = ChatMediator()
+    val john = ChatUser(mediator, "John")
+    val alice = ChatUser(mediator, "Alice")
+    val bob = ChatUser(mediator, "Bob")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -63,13 +75,38 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         teste17.setOnClickListener(this)
         teste18.setOnClickListener(this)
         teste19.setOnClickListener(this)
+        teste20.setOnClickListener(this)
+        teste21.setOnClickListener(this)
+        teste22.setOnClickListener(this)
 
         state()
         obserble()
         builder()
+        command()
+        mediator()
     }
 
+    fun mediator(){
+        teste20.text = "John"
+        teste21.text = "Alice"
+        teste22.text = "Bob"
 
+        mediator
+            .addUser(alice)
+            .addUser(bob)
+            .addUser(john)
+    }
+
+    fun command(){
+        CommandProcessor()
+            .addToQueue(OrderAddCommand(1L))
+            .addToQueue(OrderAddCommand(2L))
+            .addToQueue(OrderPayCommand(2L))
+            .addToQueue(OrderPayCommand(1L))
+            .addToQueue(OrderSanCommand(1L))
+            .addToQueue(OrderSanCommand(2L))
+            .processCommands()
+    }
 
     fun state(){
         Log.i("BENNN", "state ")
@@ -199,6 +236,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         drawStars()
                     }
                 }
+            }
+            teste20 ->{
+                //veja o logger
+                john.send("Hi everyone!")
+            }
+            teste21 ->{
+                //veja o logger
+                alice.send("Hi everyone!")
+            }
+            teste22 ->{
+                //veja o logger
+                bob.send("Hi everyone!")
             }
         }
     }
