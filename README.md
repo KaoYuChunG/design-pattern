@@ -6,5 +6,10 @@
 + factory 
 + state 
 + strategy
++ visitor
++ mediator
++ composite
++ command
++ adapter
 
 
