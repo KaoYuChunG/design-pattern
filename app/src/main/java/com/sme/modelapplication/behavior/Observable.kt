@@ -4,18 +4,13 @@ import android.util.Log
 import kotlin.properties.Delegates
 
 interface StockUpdateListener {
-    fun onRise(price: Int)
-    fun onFall(price: Int)
+    fun onRise(price: Int):String
+    fun onFall(price: Int):String
 }
 
 class StockDisplay: StockUpdateListener{
-    override fun onRise(price: Int) {
-        Log.i("BENNN","Rise ${price}")
-    }
-
-    override fun onFall(price: Int) {
-       Log.i("BENNN","fall ${price}")
-    }
+    override fun onRise(price: Int) = "Rise ${price}"
+    override fun onFall(price: Int) = "fall ${price}"
 }
 
 class StockUpdate{
@@ -23,9 +18,11 @@ class StockUpdate{
 
     var price: Int by Delegates.observable(0){ _, old, new ->
         listeners.forEach {
-            Log.i("BENNN","old   ${old}")
-            Log.i("BENNN","new   ${new}")
-            if (new > old) it.onRise(price) else it.onFall(price)
+            if (new > old){
+                Log.i("BENNN","onRise -->"+it.onRise(price))
+            } else{
+                Log.i("BENNN","onFall -->"+it.onFall(price))
+            }
         }
     }
 

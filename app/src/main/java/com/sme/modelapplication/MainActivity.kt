@@ -63,6 +63,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         teste5.setOnClickListener(this)
         teste6.setOnClickListener(this)
         teste7.setOnClickListener(this)
+        teste77.setOnClickListener(this)
         teste8.setOnClickListener(this)
         teste9.setOnClickListener(this)
         teste10.setOnClickListener(this)
@@ -84,6 +85,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         builder()
         command()
         mediator()
+
+        LogcatHelper.openLog(this)
     }
 
     fun mediator(){
@@ -160,12 +163,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             teste6 -> {
                 su.price = 100
                 su.value = 1
-                textView.text = su.value.toString()
+                textView.text = su.value.toString() + su.price.toString()
             }
             teste7 -> {
                 su.price = 80
                 su.value = -1
-                textView.text = su.value.toString()
+                textView.text = su.value.toString() + su.price.toString()
+            }
+            teste77 -> {
+                su.price = 180
+                su.value = 2
+                textView.text = su.value.toString() + su.price.toString()
             }
             teste8 -> {
                 //metodo 1
